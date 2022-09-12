@@ -4,7 +4,7 @@ import Constants from 'expo-constants';
 import { EventRegister } from 'react-native-event-listeners'
 import { CheckBox } from 'react-native-elements';
 
-import { AuthenticationApi } from '../../api/authentication';
+import { DriverApi } from '../../api/driver';
 import { getStorage, setStorage } from '../../api/helper/storage';
 
 const bgImage = '../../assets/bg-image.png';
@@ -44,7 +44,7 @@ export default class Login extends Component {
       if(loginInfo) {
         this.setState({username: loginInfo[0]})
         this.setState({password: loginInfo[1]})
-        let [res, err] = await AuthenticationApi.login(loginInfo[0], loginInfo[1]);
+        let [res, err] = await DriverApi.login(loginInfo[0], loginInfo[1]);
         if(err) {
           this.setState({ error: true });
         }
@@ -63,7 +63,7 @@ export default class Login extends Component {
     let loginInfo = [this.state.username, this.state.password]
     await setStorage('loginInfo', loginInfo)
     
-    let [res, err] = await AuthenticationApi.login(this.state.username, this.state.password);
+    let [res, err] = await DriverApi.login(this.state.username, this.state.password);
     if(err) {
       this.setState({ error: true });
     }

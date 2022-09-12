@@ -1,8 +1,8 @@
 import React, { Component }  from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, ImageBackground, Image, Modal, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, View, ImageBackground, Image } from 'react-native';
 import { EventRegister } from 'react-native-event-listeners'
 
-import { AuthenticationApi } from '../api/authentication'; 
+import { DriverApi } from '../api/driver'; 
 import { getStorage, setStorage } from '../api/helper/storage';
 
 const bgImage = '../assets/bg-image.png';
@@ -42,7 +42,7 @@ export default class Start extends Component {
       if(loginInfo) {
         this.setState({username: loginInfo[0]})
         this.setState({password: loginInfo[1]})
-        let [res, err] = await AuthenticationApi.login(loginInfo[0], loginInfo[1]);
+        let [res, err] = await DriverApi.login(loginInfo[0], loginInfo[1]);
         if(err) {
           this.setState({ error: true });
         }
@@ -67,10 +67,6 @@ export default class Start extends Component {
         this.setState({remember: false})
       });
     }
-  }
-  
-  setModalVisible = (visible) => {
-    this.setState({ modalVisible: visible });
   }
 
   render() {

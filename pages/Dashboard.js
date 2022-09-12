@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity, ImageBackground, Image } from
 import { EventRegister } from 'react-native-event-listeners'
 import Constants from 'expo-constants';
 
-import { AuthenticationApi } from '../api/authentication'; 
+import { DriverApi } from '../api/driver'; 
 import { getStorage, setStorage } from '../api/helper/storage';
 
 const bgImage = '../assets/bg-image.png';
@@ -29,7 +29,7 @@ export default class QuickQuotation4 extends Component {
 
   async logOut() {
     let user = await getStorage('user');
-    await AuthenticationApi.logout(user.refresh);
+    await DriverApi.logout(user.refresh);
     this.props.navigation.navigate('Login');
     EventRegister.emit('logout', true);
   }

@@ -21,7 +21,7 @@ export default class App extends Component{
     return (
       <NavigationContainer>
         <StatusBar style="light" />
-        <Stack.Navigator initialRouteName="Dashboard" screenOptions={{headerShown: false}}>
+        <Stack.Navigator initialRouteName="Start" screenOptions={{headerShown: false}}>
           <Stack.Screen name="Start" component={Start}/>
           <Stack.Screen name="Login" component={Login} options={{ cardStyleInterpolator: forFade }}/>
           <Stack.Screen name="Dashboard" component={Dashboard} options={{gestureEnabled: false}}/>

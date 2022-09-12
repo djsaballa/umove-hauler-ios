@@ -3,9 +3,9 @@ import { getStorage, setStorage } from './helper/storage';
 
 var request = new Request;
 
-export class AuthenticationApi {
+export class DriverApi {
   static login(username, password) {
-    return request.post('customers/login', { username, password });
+    return request.post('drivers/login', { username, password });
   }
 
   static async logout(refresh) {
@@ -13,10 +13,5 @@ export class AuthenticationApi {
     await setStorage('remember', null)
     await setStorage('loginInfo', null);
     return request.post('logout', {refresh});
-  }
-
-  // NOT USED
-  static verifyOTP(username, otp) {
-    return request.post('verify', { username, otp });
   }
 }
